@@ -26,6 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', False) == 'True'
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'user.CustomUser'
 
 # Application definition
 
@@ -36,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'user.apps.UserConfig'
 ]
 
 MIDDLEWARE = [
