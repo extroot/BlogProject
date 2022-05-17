@@ -1,7 +1,7 @@
 from .forms import LoginUserForm, CreateUserForm
 
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 
 def login_page(request):
@@ -40,3 +40,8 @@ def registration(request):
     template_name = 'includes/form.html'
     context = {'form': user_form}
     return render(request, template_name, context)
+
+
+def logout_page(request):
+    logout(request)
+    return redirect('home_page')
