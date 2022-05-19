@@ -3,8 +3,8 @@ from datetime import datetime
 from django.db import models
 from tinymce.models import HTMLField
 
-from user.models import CustomUser
 from core.models import Slug
+from user.models import CustomUser
 
 
 class Article(Slug):
