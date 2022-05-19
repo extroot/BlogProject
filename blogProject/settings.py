@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'user.apps.UserConfig',
     'tinymce',
+    'homepage.apps.HomepageConfig'
 ]
 
 MIDDLEWARE = [
