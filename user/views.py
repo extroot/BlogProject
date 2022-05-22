@@ -71,22 +71,22 @@ def logout_page(request):
 def verification_email(request, user_id, token):
     if request.user.is_authenticated:
         # TODO: Сообщение, что вход уже выполнен
-        return redirect(f'/profile')
+        return redirect('home_page')
     try:
         username = force_str(urlsafe_base64_decode(user_id))
         user = CustomUser.objects.get(username=username)
     except CustomUser.DoesNotExist:
         # TODO: сообщение "что-то пошло не так :)"
-        return redirect('/login')
+        return redirect('login_page')
 
     if user.is_active:
         # TODO: сообщение, что аккаунт уже активен
-        return redirect('/login')
+        return redirect('login_page')
     if token_generator.check_token(user, token):
         user.is_active = True
         user.save()
         # TODO: сообщение об успехе
-        return redirect('/login')
+        return redirect('login_page')
 
     # TODO: сообщение "что-то пошло не так :)"
-    return redirect('/login')
+    return redirect('login_page')
