@@ -12,18 +12,18 @@ class Article(Slug):
                                blank=True, null=True)
     text = HTMLField(verbose_name='Текст')
     visibility = models.BooleanField(verbose_name='Видимость')
-    modified_date = models.DateTimeField(default=datetime.now())
+    modified_date = models.DateTimeField(default=datetime.now)
     author = models.ForeignKey(
         verbose_name='Автор',
         to=CustomUser,
         on_delete=models.CASCADE,
         related_name='article'
     )
-    tags = models.ManyToManyField(
-        verbose_name='Теги',
-        to='Tag',
-        related_name='articles',
-    )
+    # tags = models.ManyToManyField(
+    #     verbose_name='Теги',
+    #     to='Tag',
+    #     related_name='articles',
+    # )
     views_count = models.IntegerField(verbose_name='Просмотры')
 
 
@@ -33,9 +33,9 @@ class LikeDislike(models.Model):
                                  choices=LIKING_CHOICES)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,
                              verbose_name='Пользователь',
-                             related_name='liking')
+                             related_name='likes')
     item = models.ForeignKey(Article, on_delete=models.CASCADE,
-                             verbose_name='Статья', related_name='liking')
+                             verbose_name='Статья', related_name='likes')
 
     class Meta:
         verbose_name = 'Оценка'
