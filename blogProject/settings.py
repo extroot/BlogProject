@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'tinymce',
+    'article.apps.ArticleConfig',
+    'comments.apps.CommentsConfig',
+    'core.apps.CoreConfig',
     'user.apps.UserConfig',
     'homepage.apps.HomepageConfig'
 ]
